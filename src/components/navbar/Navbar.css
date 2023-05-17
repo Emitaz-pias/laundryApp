@@ -1,0 +1,16 @@
+#navbarLogo{
+    height:5em;
+}
+#fixedNavbar{
+    background-color: white;
+}
+.navItem{
+    font-weight:900 !important;
+    color:000099 !important;
+    margin-right:3em;
+    margin-top: 2em;
+}
+.navItem:hover{
+    text-decoration: none;
+    color:aquamarine !important;
+}

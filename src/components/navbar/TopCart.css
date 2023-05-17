@@ -1,0 +1,19 @@
+#topCart{
+height:5vh;
+background-color:#2EA3F2;
+}
+#topAdress{
+    font-size: 12px;
+    color: #fff;
+    margin-left: 0.56em;
+    margin-bottom: 0.5em;
+}
+.topCartItems{
+    color: #ffff;
+    font-size: 12px;
+    font-weight: 900;
+    padding-left: 1em;
+}
+.topCartItems:hover{
+    cursor: pointer;
+}

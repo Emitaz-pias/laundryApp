@@ -1,0 +1,19 @@
+#topWave{
+   border-radius:3em;
+    position: absolute;
+    z-index: -1;
+    height:50vh;
+    width: 100vw;
+}
+
+.rounded-button {
+padding:0.8em 2.2em;
+border-radius:1em;
+border:none;
+background-color: #0c71c3;
+font-size:1.5em;
+}
+  
+.bookSchedule{
+    color: hwb(27 9% 2%);
+}

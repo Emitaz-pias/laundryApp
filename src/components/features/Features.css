@@ -1,0 +1,31 @@
+
+.feature{
+    height:100vh;
+    text-align: center;
+}
+.featureHeader{
+    font-size:3.1em;
+    font-weight: bolder;
+}
+.featurePara{
+    font-size: 2em;
+    margin-top:2em;
+    font-weight: 500;
+}
+.feature1{
+    background-color: #ff947f;
+    color: #ffff;
+    
+    }
+    
+.feature2{
+    background-color: #ffc882; 
+    color: #ffff;
+}
+.feature3{
+    background-color: #f4f2ef;
+    color: black!important;
+}
+.feature4{
+    background-color: #71cfd6; 
+}
