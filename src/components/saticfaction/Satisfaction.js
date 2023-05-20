@@ -21,7 +21,11 @@ const Satisfaction = () => {
         </Col>
       </Row>
       <Row className="mt-3">
-        <Col lg={{ span: 3, offset: 1 }} md={{ span: 3, offset: 1 }} xs={11}>
+        <Col
+          lg={{ span: 3, offset: 1 }}
+          md={{ span: 4, offset: 1 }}
+          xs={{ span: 10, offset: 1 }}
+        >
           <div className="d-flex  align-items-center">
             <FontAwesomeIcon color="goldenrod" size="3x" icon={faUserGroup} />
             <div className="ms-3">
@@ -33,7 +37,11 @@ const Satisfaction = () => {
             </div>
           </div>
         </Col>
-        <Col lg={{ span: 3, offset: 1 }} md={{ span: 3, offset: 1 }} xs={11}>
+        <Col
+          lg={{ span: 3, offset: 1 }}
+          md={{ span: 4, offset: 1 }}
+          xs={{ span: 10, offset: 1 }}
+        >
           <div className="d-flex align-items-center justify-content-around">
             <FontAwesomeIcon
               color="goldenrod"
@@ -49,7 +57,11 @@ const Satisfaction = () => {
             </div>
           </div>
         </Col>
-        <Col lg={{ span: 3, offset: 1 }} md={{ span: 3, offset: 1 }} xs={11}>
+        <Col
+          lg={{ span: 3, offset: 1 }}
+          md={{ span: 4, offset: 1 }}
+          xs={{ span: 10, offset: 1 }}
+        >
           <div className="d-flex align-items-center justify-content-around">
             <FontAwesomeIcon
               color="goldenrod"
@@ -67,7 +79,11 @@ const Satisfaction = () => {
         </Col>
       </Row>
       <Row>
-        <Col lg={{ span: 4, offset: 1 }} md={{ span: 4, offset: 1 }} xs={11}>
+        <Col
+          lg={{ span: 4, offset: 1 }}
+          md={{ span: 4, offset: 1 }}
+          xs={{ span: 10, offset: 1 }}
+        >
           <div className="d-flex align-items-center justify-content-around">
             <FontAwesomeIcon color="goldenrod" size="3x" icon={faUserGroup} />
             <div className="ms-3">
@@ -80,7 +96,11 @@ const Satisfaction = () => {
             </div>
           </div>
         </Col>
-        <Col lg={{ span: 4, offset: 1 }} md={{ span: 4, offset: 1 }} xs={11}>
+        <Col
+          lg={{ span: 4, offset: 1 }}
+          md={{ span: 4, offset: 1 }}
+          xs={{ span: 10, offset: 1 }}
+        >
           <div className="d-flex align-items-center justify-content-around">
             <FontAwesomeIcon color="goldenrod" size="3x" icon={faCheck} />
             <div className="ms-3">

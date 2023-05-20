@@ -1,0 +1,33 @@
+.whatsapp-button {
+    background-color: green;
+    width: 8em;
+    height: 8em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: fixed;
+    z-index: 9999;
+    left:90%;  
+    bottom: 2em;
+  }
+  .whatsapp-icon {
+    color: white;
+  }
+  @media (max-width: 768px) {
+    .whatsapp-button {
+      bottom: 1em;
+      left:80%;
+    }}
+    @media (max-width: 767px) {
+        .whatsapp-button {
+          bottom: 1em;
+          left: 83%;
+        }}
+        /* Media Query for tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .whatsapp-button {
+      bottom: 1em;
+      left:89%;
+    }}
