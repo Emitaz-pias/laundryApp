@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const CustomBtn = () => {
-  const handleClick = () => {
-    console.log("Button clicked!");
-    // Add your custom logic here
-  };
-
   const [showIcon, setShowIcon] = useState(false);
 
   const handleMouseEnter = () => {
@@ -18,9 +14,8 @@ const CustomBtn = () => {
     setShowIcon(false);
   };
   return (
-    <button
+    <Link to={"/onlineStore"}
       className="rounded-button btn-primary"
-      onClick={handleClick}
       onMouseEnter={() => handleMouseEnter()}
       onMouseLeave={() => handleMouseLeave()}
     >
@@ -33,7 +28,7 @@ const CustomBtn = () => {
           className="ms-3 mt-1"
         ></FontAwesomeIcon>
       )}
-    </button>
+    </Link>
   );
 };
 

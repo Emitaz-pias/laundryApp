@@ -6,6 +6,7 @@ import { useState } from "react";
 import MyAccountPage from "./pages/myAccountPage/MyAccount";
 import OnlineStore from "./pages/onlineStorePage/OnlineStore";
 import CheckoutPage from "./pages/checkoutPage/Checkout";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
       <Route path="/register" element={<LoginPage onLogin={handleLogin} />} />
       <Route path="/onlineStore" element={<OnlineStore/>}/>
       <Route path="/checkout" element={<CheckoutPage/>} />
+      <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
 
         {/* <PrivateRoute path="/" element={<MyAccountPage onLogout={handleLogout} />} />  */}
