@@ -4,6 +4,7 @@ import logo from "../../images/laundromatLogo.png";
 import "./Navbar.css";
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TopNavbar = () => {
   return (
@@ -16,7 +17,7 @@ const TopNavbar = () => {
     >
       <div className="d-flex w-100 justify-content-between align-items-center">
         <div>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <img className="ms-4 pb-4" id="navbarLogo" src={logo} alt="logo" />
           </Navbar.Brand>
         </div>
@@ -24,16 +25,16 @@ const TopNavbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
-              <Nav.Link className="navItem" href="#myAccount">
+              <Nav.Link className="navItem" as={Link} to="/myAccount">
                 MY ACCOUNT
               </Nav.Link>
-              <Nav.Link className="navItem" href="#onlineStore">
+              <Nav.Link className="navItem" as={Link} to="/onlineStore">
                 ONLINE STORE
               </Nav.Link>
-              <Nav.Link className="navItem" href="#myCart">
+              <Nav.Link className="navItem" as={Link} to="/myCart">
                 MY CART
               </Nav.Link>
-              <Nav.Link className="navItem" href="#checkout">
+              <Nav.Link className="navItem" as={Link} to="/checkout">
                 CHECKOUT
               </Nav.Link>
             </Nav>

@@ -16,11 +16,14 @@ import Services from '../services/Services';
 import CheckoutPage from '../checkoutPage/Checkout';
 import Cart from '../../components/cart/Cart';
 import Dashboard from '../dashboard/Dashboard';
+import BottomSection from '../../components/bottomSection/BottomSection';
+import OnlineStore from '../onlineStorePage/OnlineStore';
+import MyAccountPage from '../myAccountPage/MyAccount';
 
 const Homepage = () => {
     return (
         <main>
-         <TopCart />
+       <TopCart />
       <TopNavbar/>
       <TopConvienceSection />
       <BookSchedule />
@@ -28,32 +31,9 @@ const Homepage = () => {
       <BookSlot />
       <Satisfaction />
       <Benefits />
-      <WhatsappBtn />
-      <Row className='w-75'>
-        <Col>
-        <LoginPage />
-     </Col>
-      <Col>
-      <SignUpPage/></Col>
-      </Row>
-      <Row className='w-75'>
-        <Col>
-      <Packages/>
-     </Col>
-      <Col>
-     <Services/></Col>
-      </Row>
-      <Row className='w-75'>
-        <Col>
-      <CheckoutPage/>
-     </Col>
-      <Col>
-      <Cart/>   
-     </Col>
-      </Row>
-      <Row>
-        <Dashboard/>
-      </Row>
+       <WhatsappBtn />
+      <BottomSection/>
+     
         </main>
     );
 };

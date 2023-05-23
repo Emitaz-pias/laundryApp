@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Form,Container, Row, Col, Card, Button } from 'react-bootstrap';
 import PayPalButton from '../../components/paypal/PaypalButton';
 import PayPalProvider from '../../components/paypal/PaypalProvider';
+import TopNavbar from '../../components/navbar/Navbar';
 
 const CheckoutPage = () => {
   const [billingInfo, setBillingInfo] = useState({
@@ -35,6 +36,9 @@ const CheckoutPage = () => {
 
   return (
     <Container>
+         <Row>
+      <TopNavbar/>  </Row> 
+      <Row className='mt-5 pt-5'></Row>
       <Row className="justify-content-center">
         <Col md={6}>
           <h2>Checkout</h2>

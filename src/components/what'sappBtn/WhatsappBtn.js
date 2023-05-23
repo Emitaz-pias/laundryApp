@@ -5,7 +5,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { Col, Row } from "react-bootstrap";
 
 const WhatsappBtn = () => {
-  const phoneNumber = "+8801847538418";
+  const phoneNumber = "+3550686169177";
   const handleClick = () => {
     window.open(`https://wa.me/${phoneNumber}`, "_blank");
   };

@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const MessengerBtn = () => {
+  const phoneNumber = "+3550686169177";
   const handleClick = () => {
-    console.log("Button clicked!");
-    // Add your custom logic here
+         window.open(`https://wa.me/${phoneNumber}`, "_blank");
   };
 
   const [showIcon, setShowIcon] = useState(false);
@@ -24,7 +24,7 @@ const MessengerBtn = () => {
       onMouseEnter={() => handleMouseEnter()}
       onMouseLeave={() => handleMouseLeave()}
     >
-      Messenger
+     Message US
       {showIcon && (
         <FontAwesomeIcon
           icon={faArrowRight}
