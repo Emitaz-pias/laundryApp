@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios'
+import "./SignUp.css"
 
 const SignUpPage = () => {
     const {
@@ -13,11 +14,11 @@ const SignUpPage = () => {
       const onSubmit = async data => {
         try {
           // Make POST API request
-          const response = await axios.post('http://example.com/signup', data, {
+          const response = await axios.post('http://localhost:5000/signup', data, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
-            },
+            }
           });
     
           // Handle response
@@ -41,7 +42,7 @@ const SignUpPage = () => {
                   type="text"
                   {...register('name', { required: true })}
                 />
-                {errors.name && <span>Name is required</span>}
+                {errors.name && <span className='error'>Name is required</span>}
               </Form.Group>
   
               <Form.Group controlId="email">
@@ -50,7 +51,7 @@ const SignUpPage = () => {
                   type="email"
                   {...register('email', { required: true })}
                 />
-                {errors.email && <span>Email is required</span>}
+                {errors.email && <span className='error'>Email is required</span>}
               </Form.Group>
   
               <Form.Group controlId="address">
@@ -58,9 +59,9 @@ const SignUpPage = () => {
                 <Form.Control
                   as="textarea"
                   rows={3}
-                  {...register('address', { required: true })}
+                  {...register('address', { required: false })}
                 />
-                {errors.address && <span>Address is required</span>}
+                {errors.address && <span className='error'>Address is required</span>}
               </Form.Group>
   
               <Form.Group controlId="mobile">
@@ -69,17 +70,17 @@ const SignUpPage = () => {
                   type="tel"
                   {...register('mobile', {
                     required: true,
-                    pattern: /^[0-9]{10}$/,
+                   
                   })}
                 />
                 {errors.mobile && (
-                  <span>
+                  <span className='error'>
                     Mobile Number is required and must be 10 digits long
                   </span>
                 )}
               </Form.Group>
   
-              <Button variant="primary" type="submit">
+              <Button className='mt-4' variant="primary" type="submit">
                 Sign Up
               </Button>
             </Form>

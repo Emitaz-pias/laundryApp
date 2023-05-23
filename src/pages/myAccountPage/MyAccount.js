@@ -1,33 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import TopNavbar from '../../components/navbar/Navbar';
+import LogInPage from "../../pages/loginPage/LoginPage"
+import SignUpPage  from "../../pages/signUpPage/SignUpPage"
+
 
 const MyAccountPage = () => {
+  const [haveAccount,setHaveAccount] =useState(false)
+  const handleClick = () => {
+    setHaveAccount(!haveAccount)
+  }
   return (
     <Container>
       <Row>
       <TopNavbar/>  </Row> 
       <Row className='mt-5 pt-5'></Row>
-      <Row className='mt-5 pt-5'>
-        <Col>
-          <h1>My Account</h1>
-          <Form>
-            <Form.Group controlId="formEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-            </Form.Group>
-
-            <Form.Group controlId="formPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Update Account
-            </Button>
-          </Form>
-        </Col>
+      <Row>
+      {haveAccount?<LogInPage></LogInPage>:<SignUpPage></SignUpPage>}
+      
       </Row>
+      {
+       !haveAccount&&<Row>
+       <Col lg={{offset:6,span:6}} >
+        <p  onClick={handleClick}>already have an account</p>
+       </Col>
+     </Row>
+      }
+      
+
     </Container>
   );
 };

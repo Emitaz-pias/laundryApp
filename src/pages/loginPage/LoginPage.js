@@ -13,7 +13,7 @@ const LoginPage = () => {
       const onSubmit = async data => {
         try {
           // Make POST API request
-          const response = await axios.post('http://example.com/login', data, {
+          const response = await axios.post('http://localhost:5000/login', data, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
@@ -41,7 +41,7 @@ const LoginPage = () => {
                   type="email"
                   {...register('email', { required: true })}
                 />
-                {errors.email && <span>Email is required</span>}
+                {errors.email && <span className='error'>Email is required</span>}
               </Form.Group>
   
               <Form.Group controlId="password">
@@ -50,11 +50,11 @@ const LoginPage = () => {
                   type="password"
                   {...register('password', { required: true })}
                 />
-                {errors.password && <span>Password is required</span>}
+                {errors.password && <span className='error'>Password is required</span>}
               </Form.Group>
   
-              <Button variant="primary" type="submit">
-                Submit
+              <Button className='mt-4' variant="primary" type="submit">
+                Login
               </Button>
             </Form>
           </Col>
