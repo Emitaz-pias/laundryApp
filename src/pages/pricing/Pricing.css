@@ -1,21 +1,24 @@
 .pricing{
     background-color:#EFF3F5;
+    background-image: url('../../images/section-star.jpg');
+    background-position: center center ;
+    background-repeat: repeat-y;
     margin-top: 2em;
-    padding: 0 1em;
+    padding: 5em 2em;
     margin-left: 1em;
-   max-width: 98vw;
+    max-width: 98vw;
+    height:100h;
 }
 .pricingHeader{
     color:#6298c7 ;
     text-align: center;
 }
 .box{
-    background-color: white;
     color: black;
     text-align: center;
-    max-height: 30em;
-    margin-bottom: 2em;
-  
+    padding-top: 1em;
+    background-color: white;
+    border-radius: 0.4em;
 }
 .table{
     background-color: white;
