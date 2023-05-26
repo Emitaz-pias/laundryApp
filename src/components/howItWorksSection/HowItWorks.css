@@ -1,0 +1,16 @@
+.howItWorksSection{
+    background-color: #EFF3F5;
+    height: 50vh;
+    color:#002f86;
+    border-radius: 5em;
+}
+.processHeader{
+    margin-top: 0.5em;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+.processPara{
+    font-weight: 400;
+    margin-top: 0.6em;
+    font-size: 1.4;
+}

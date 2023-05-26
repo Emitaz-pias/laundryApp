@@ -19,6 +19,7 @@ import Dashboard from '../dashboard/Dashboard';
 import BottomSection from '../../components/bottomSection/BottomSection';
 import OnlineStore from '../onlineStorePage/OnlineStore';
 import MyAccountPage from '../myAccountPage/MyAccount';
+import HowItWorks from '../../components/howItWorksSection/HowItWorks';
 
 const Homepage = () => {
     return (
@@ -30,6 +31,7 @@ const Homepage = () => {
       <Features />
       <BookSlot />
       <Satisfaction />
+      <HowItWorks/>
       <Benefits />
        <WhatsappBtn />
       <BottomSection/>
