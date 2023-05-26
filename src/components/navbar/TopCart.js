@@ -7,11 +7,11 @@ import { Col, Row } from "react-bootstrap";
 const TopCart = () => {
   return (
     <div id="topCart" className="fixed-top">
-      <Row className="align-items-center w-100 ">
+      <Row className="text-center ">
         <Col
-          lg={{ span: 8, offset: 1 }}
+          lg={{ span: 8, offset: 2 }}
           md={{ span: 8, offset: 1 }}
-          xs={{ span: 8, offset: 1 }}
+          xs={{ span: 8, offset: 2 }}
         >
           <div className="container p-1">
             <FontAwesomeIcon icon={faPhone} color="white" size="2x" />
@@ -23,12 +23,12 @@ const TopCart = () => {
           </div>
         </Col>
 
-        <Col lg={2} md={2} xs={2}>
+        {/* <Col lg={2} md={2} xs={2}>
           <div>
             <FontAwesomeIcon icon={faCartShopping} color="white" size="2x" />
             <span className="topCartItems">0Items</span>
           </div>
-        </Col>
+        </Col> */}
       </Row>
     </div>
   );

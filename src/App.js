@@ -33,7 +33,7 @@ function App() {
       <Route path="/" element={ <Homepage/>}/>
       <Route path="/myAccount" element={<MyAccountPage onLogout={handleLogout} />} />
       <Route path="/register" element={<LoginPage onLogin={handleLogin} />} />
-      <Route path="/onlineStore" element={<OnlineStore/>}/>
+      <Route path="/features" element={<OnlineStore/>}/>
       <Route path="/checkout" element={<CheckoutPage/>} />
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />

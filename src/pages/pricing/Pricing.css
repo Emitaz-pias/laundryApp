@@ -1,0 +1,27 @@
+.pricing{
+    background-color:#EFF3F5;
+    margin-top: 2em;
+    padding: 0 1em;
+    margin-left: 1em;
+   max-width: 98vw;
+}
+.pricingHeader{
+    color:#6298c7 ;
+    text-align: center;
+}
+.box{
+    background-color: white;
+    color: black;
+    text-align: center;
+    max-height: 30em;
+    margin-bottom: 2em;
+  
+}
+.table{
+    background-color: white;
+    margin-top: 2em;
+}
+.thCol{
+   background-color:#6298c7; 
+   color:white;
+}

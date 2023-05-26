@@ -11,7 +11,7 @@ import deliver from "../../images/deliver.png"
 
 const HowItWorks = () => {
     return (
-        <Container className='mt-5 pt-2 howItWorksSection '>
+        <Container id="howItWorks" className='mt-5 pt-2 howItWorksSection '>
         <Row className='mt-5'>
           <Col lg={{span:6,offset:5}} md={{span:6,offset:5}} xs={{span:6,offset:4}}>
             <h2 className='customHeader'>How It Works ?</h2>

@@ -5,7 +5,7 @@ import BubbleImage from "../../images/bubbleIcon.webp";
 import MessengerBtn from "../bookScheduleSection/MessengerBtn";
 const Features = () => {
   return (
-    <section id="featuresSection">
+    <section id="features">
       <Row className=" m-1">
         <Col className="feature feature1" lg={3} md={6} xs={12}>
           <img src={BubbleImage} alt="bubble Icon"></img>

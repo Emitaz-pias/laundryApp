@@ -20,11 +20,11 @@ import BottomSection from '../../components/bottomSection/BottomSection';
 import OnlineStore from '../onlineStorePage/OnlineStore';
 import MyAccountPage from '../myAccountPage/MyAccount';
 import HowItWorks from '../../components/howItWorksSection/HowItWorks';
+import Pricing from '../pricing/Pricing';
 
 const Homepage = () => {
     return (
         <main>
-       <TopCart />
       <TopNavbar/>
       <TopConvienceSection />
       <BookSchedule />
@@ -32,6 +32,7 @@ const Homepage = () => {
       <BookSlot />
       <Satisfaction />
       <HowItWorks/>
+      <Pricing/>
       <Benefits />
        <WhatsappBtn />
       <BottomSection/>
