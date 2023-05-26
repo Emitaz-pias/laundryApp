@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import TopNavbar from '../../components/navbar/Navbar';
-import Packages from "../packagesPage/Packages"
+
 
 const OnlineStore = () => {
     return (
@@ -11,7 +11,7 @@ const OnlineStore = () => {
       <Row className='mt-5 pt-5'></Row>
            <Row >
            <Col>
-            <Packages/>
+            {/* <Packages/> */}
            </Col>
            </Row>
         </div>

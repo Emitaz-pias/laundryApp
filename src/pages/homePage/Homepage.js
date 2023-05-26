@@ -11,7 +11,7 @@ import WhatsappBtn from '../../components/what\'sappBtn/WhatsappBtn';
 import LoginPage from '../../pages/loginPage/LoginPage';
 import SignUpPage from '../../pages/signUpPage/SignUpPage';
 import { Col, Row } from 'react-bootstrap';
-import Packages from '../packagesPage/Packages';
+import Packages from '../../components/packages/Packages';
 import Services from '../services/Services';
 import CheckoutPage from '../checkoutPage/Checkout';
 import Cart from '../../components/cart/Cart';
@@ -33,6 +33,7 @@ const Homepage = () => {
       <Satisfaction />
       <HowItWorks/>
       <Pricing/>
+      <Packages />
       <Benefits />
        <WhatsappBtn />
       <BottomSection/>

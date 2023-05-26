@@ -1,0 +1,43 @@
+.packages{
+    background-image: url("../../images/section-star.jpg");
+    background-repeat:no-repeat;
+    background-position:center top;
+    max-width: 100vw;
+    margin-top: 2em;
+    padding: 6em;
+    border-radius: 1em;
+    background-color: #EFF3F5;
+}
+.customCard{
+    text-align: center;
+    padding: 1.8em;
+    height: 93vh;
+
+}
+.customCardImg{
+border-radius: 1em !important;
+    width: 60% !important;
+    margin-left: 4.32em;
+
+}
+.customCardTitle{
+    font-size: 2.8em !important;
+}
+.customCardPrice{
+    font-size: 2.5em!important;
+    color: #337ab7;
+}
+.customCardDes{
+    font-size: 1.5em!important;
+}
+.customCardBtn{
+    padding: 1em 2em !important;
+    background-color: #337ab7 !important;
+    color:white !important;
+}
+.customCardBtn:hover{
+    background-color: green !important;
+    padding: 1em 2em !important;
+color: white !important;
+
+}
