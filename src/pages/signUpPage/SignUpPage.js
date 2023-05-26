@@ -3,6 +3,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios'
 import "./SignUp.css"
+import { json } from 'react-router-dom';
 
 const SignUpPage = () => {
     const {
@@ -22,16 +23,18 @@ const SignUpPage = () => {
           });
     
           // Handle response
-          console.log('API response:', response.data);
+         data.response=json()
+         
         } catch (error) {
           // Handle error
           console.log('API error:', error);
         }
       };
+      
     ;
     return (
        
-        <Container>
+        <Container className='mt-5 pt-5'>
         <Row className="justify-content-center">
           <Col md={6}>
             <h2>Sign Up</h2>
@@ -53,7 +56,14 @@ const SignUpPage = () => {
                 />
                 {errors.email && <span className='error'>Email is required</span>}
               </Form.Group>
-  
+              <Form.Group controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  {...register('password', { required: true })}
+                />
+                {errors.password && <span className='error'>Password is required</span>}
+              </Form.Group>
               <Form.Group controlId="address">
                 <Form.Label>Address</Form.Label>
                 <Form.Control

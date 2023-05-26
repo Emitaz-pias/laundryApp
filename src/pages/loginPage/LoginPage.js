@@ -11,6 +11,7 @@ const LoginPage = () => {
       } = useForm();
 
       const onSubmit = async data => {
+        
         try {
           // Make POST API request
           const response = await axios.post('http://localhost:5000/login', data, {
@@ -42,6 +43,7 @@ const LoginPage = () => {
                   {...register('email', { required: true })}
                 />
                 {errors.email && <span className='error'>Email is required</span>}
+                
               </Form.Group>
   
               <Form.Group controlId="password">

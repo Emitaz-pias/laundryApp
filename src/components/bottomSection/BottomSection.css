@@ -1,0 +1,10 @@
+.bottomHeader{
+    font-size: 2.3em;
+    margin-left: 2em;
+}
+.customLink{
+    font-size: 2.3em;
+    text-decoration: none;
+    list-style: none;
+    margin-left: 1em;
+}
