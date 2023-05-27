@@ -4,6 +4,11 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios'
 
 const LoginPage = () => {
+  const [haveAccount,setHaveAccount] =useState(false);
+  const handleClick = () => {
+    setHaveAccount(!haveAccount)
+  }
+
     const {
         register,
         handleSubmit,
@@ -11,7 +16,7 @@ const LoginPage = () => {
       } = useForm();
 
       const onSubmit = async data => {
-        
+        console.log(data)
         try {
           // Make POST API request
           const response = await axios.post('http://localhost:5000/login', data, {
@@ -61,6 +66,7 @@ const LoginPage = () => {
             </Form>
           </Col>
         </Row>
+        
       </Container>  
           
     );
