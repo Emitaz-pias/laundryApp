@@ -7,6 +7,7 @@ import MyAccountPage from "./pages/myAccountPage/MyAccount";
 import OnlineStore from "./pages/onlineStorePage/OnlineStore";
 import CheckoutPage from "./pages/checkoutPage/Checkout";
 import Dashboard from "./pages/dashboard/Dashboard";
+import Features from "./components/features/Features";
 
 
 function App() {
@@ -31,11 +32,11 @@ function App() {
     <Routes>
       
       <Route path="/" element={ <Homepage/>}/>
-      <Route path="/myAccount" element={<MyAccountPage onLogout={handleLogout} />} />
-      <Route path="/register" element={<LoginPage onLogin={handleLogin} />} />
-      <Route path="/features" element={<OnlineStore/>}/>
-      <Route path="/checkout" element={<CheckoutPage/>} />
+      {/* <Route path="/features" element={<Features/>}/> */}
+      {/* <Route path="/checkout" element={<CheckoutPage/>} /> */}
       <Route path="/dashboard" element={<Dashboard/>} />
+      <Route path="/register" element={<LoginPage onLogin={handleLogin} />} />
+      <Route path="/myAccount" element={<MyAccountPage onLogout={handleLogout} />} />
       <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
 
         {/* <PrivateRoute path="/" element={<MyAccountPage onLogout={handleLogout} />} />  */}

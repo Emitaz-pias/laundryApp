@@ -3,9 +3,10 @@ import "./Features.css";
 import { Row, Col } from "react-bootstrap";
 import BubbleImage from "../../images/bubbleIcon.webp";
 import MessengerBtn from "../bookScheduleSection/MessengerBtn";
+import { Element } from 'react-scroll';
 const Features = () => {
   return (
-    <section id="features">
+    <Element name="features">
       <Row className=" m-1">
         <Col className="feature feature1" lg={3} md={6} xs={12}>
           <img src={BubbleImage} alt="bubble Icon"></img>
@@ -55,7 +56,7 @@ const Features = () => {
           <MessengerBtn />
         </Col>
       </Row>
-    </section>
+    </Element>
   );
 };
 

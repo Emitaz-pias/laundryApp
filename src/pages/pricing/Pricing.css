@@ -23,6 +23,7 @@
 .table{
     background-color: white;
     margin-top: 2em;
+    cursor: pointer;
 }
 .thCol{
    background-color:#6298c7; 

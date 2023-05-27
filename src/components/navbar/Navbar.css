@@ -8,6 +8,8 @@
     font-weight:900 !important;
     color:#2EA3F2 !important;
     font-size: 1.4em;
+    padding: 0.5em;
+    text-decoration: none;
 }
 .navItem:hover{
     text-decoration: none;

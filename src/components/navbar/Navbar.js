@@ -4,7 +4,8 @@ import logo from "../../images/laundromatLogo.png";
 import "./Navbar.css";
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from 'react-router-dom';
+import { Link as ScrollLink, Element } from 'react-scroll';
 import { Container } from "react-bootstrap";
 import TopCart from "./TopCart";
 
@@ -21,7 +22,7 @@ const TopNavbar = () => {
     >
       <div className="d-flex w-100 justify-content-between align-items-center">
         <div>
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand as={RouterLink} to="/">
             <img className="ms-1 pb-4" id="navbarLogo" src={logo} alt="logo" />
           </Navbar.Brand>
         </div>
@@ -29,22 +30,22 @@ const TopNavbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
-              <Nav.Link className="navItem" as={Link} to="/#features">
+              <ScrollLink className="navItem"  to="features" smooth={true} duration={100}>
               Our Services
-              </Nav.Link>
-              <Nav.Link className="navItem" as={Link} to="howItWorks">
+              </ScrollLink>
+              <ScrollLink className="navItem" to="howItWorks" smooth={true} duration={100}>
               How It Works
-              </Nav.Link>
-              <Nav.Link className="navItem" as={Link} to="/myCart">
+              </ScrollLink>
+              <ScrollLink className="navItem" to="pricing" smooth={true} duration={100}>
                Pricing
-              </Nav.Link>
-                <Nav.Link className="navItem" as={Link} to="/checkout">
+              </ScrollLink>
+                <ScrollLink className="navItem" to="packages" smooth={true} duration={100}>
                   Packages
-                </Nav.Link>
+                </ScrollLink>
         
-                <Nav.Link className="navItem" as={Link} to="/myAccount">
+                <RouterLink className="navItem" as={RouterLink} to="/myAccount">
               MyAccount
-                </Nav.Link>
+                </RouterLink>
             </Nav>
           </Navbar.Collapse>
         </div>
