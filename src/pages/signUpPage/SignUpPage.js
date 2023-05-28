@@ -3,7 +3,6 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios'
 import "./SignUp.css"
-import { json } from 'react-router-dom';
 
 const SignUpPage = () => {
     const {
@@ -13,22 +12,17 @@ const SignUpPage = () => {
       } = useForm();
     
       const onSubmit = async data => {
-        try {
+       
           // Make POST API request
-          const response = await axios.post('http://localhost:5000/signup', data, {
+          const response = await fetch('http://localhost:5000/signup', {
+            method: 'POST',
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
-            }
-          });
+            },
+            body: JSON.stringify(data),
+          }).then(res=>res.json()).then(data=>console.log(data,"is the fucking datatatatata"))
     
-          // Handle response
-         data.response=json()
-         
-        } catch (error) {
-          // Handle error
-          console.log('API error:', error);
-        }
       };
       
     ;

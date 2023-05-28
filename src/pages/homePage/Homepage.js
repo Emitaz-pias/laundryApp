@@ -37,7 +37,7 @@ const Homepage = () => {
       <Benefits />
        <WhatsappBtn />
       <BottomSection/>
-     
+    
         </main>
     );
 };
