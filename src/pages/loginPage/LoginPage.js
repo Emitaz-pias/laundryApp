@@ -29,17 +29,22 @@ const LoginPage = () => {
               'Access-Control-Allow-Origin': '*',
             },
           }).then(res=>{setLoggedInUser(res)
-          if(res.data.email !=="user Not Found"){
+          
+          if(res.data.email !=="user Not Found"&&res.data.email !==undefined){
             localStorage.setItem("userName",res.data.name)
             localStorage.setItem("userEmail",res.data.email)
-            localStorage.setItem("isAuthenticated",true)
+            localStorage.setItem("isLoggedIn",true)
             setIsAuthenticated(true)
             setLoggedInUser(user)
             navigate('/');
-            
+          }
+          else{
+          
+            window.alert( "Please enter a valid Email and password")
 
-          }})
-
+          }
+})
+         
         } catch (error) {
           // Handle error
           console.log('API error:', error);
