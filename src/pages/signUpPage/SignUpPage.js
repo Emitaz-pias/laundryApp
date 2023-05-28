@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios'
 import "./SignUp.css"
 
-const SignUpPage = () => {
+const SignUpPage = ({setHaveAccount,signInSuccess,setSignInSuccess}) => {
     const {
         register,
         handleSubmit,
         formState: { errors },
       } = useForm();
-    
       const onSubmit = async data => {
        
           // Make POST API request
@@ -21,7 +20,9 @@ const SignUpPage = () => {
               'Access-Control-Allow-Origin': '*',
             },
             body: JSON.stringify(data),
-          }).then(res=>res.json()).then(data=>console.log(data,"is the fucking datatatatata"))
+          }).then(res=>res.json()).then(data=>{
+            setSignInSuccess(data);
+           })
     
       };
       
@@ -29,7 +30,12 @@ const SignUpPage = () => {
     return (
        
         <Container className='mt-5 pt-5'>
-        <Row className="justify-content-center">
+            {
+              signInSuccess? (
+                <h2 className='text-center text-success'> Congratulations, Your account has been successfully created.</h2>
+              ) : (
+                <Row className="justify-content-center">
+          
           <Col md={6}>
             <h2>Sign Up</h2>
             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -90,6 +96,11 @@ const SignUpPage = () => {
             </Form>
           </Col>
         </Row>
+              )
+            }
+         
+         
+        
       </Container>
         
     );
