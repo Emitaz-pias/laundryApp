@@ -9,6 +9,7 @@ import "./MyAccount.css"
 const MyAccountPage = () => {
   const [haveAccount,setHaveAccount] =useState(false);
   const [signInSuccess,setSignInSuccess] =useState(false)
+  
   const handleClick = () => {
     setHaveAccount(!haveAccount)
   }

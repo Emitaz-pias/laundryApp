@@ -10,6 +10,7 @@ import { Container } from "react-bootstrap";
 import TopCart from "./TopCart";
 
 const TopNavbar = () => {
+  const userName= localStorage.getItem('userName');
   return (
     <Container>
       <TopCart/>
@@ -25,11 +26,17 @@ const TopNavbar = () => {
           <Navbar.Brand as={RouterLink} to="/">
             <img className="ms-1 pb-4" id="navbarLogo" src={logo} alt="logo" />
           </Navbar.Brand>
+         
         </div>
         <div>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
+            <Navbar.Brand as={RouterLink} to="/myAccount">
+            {
+              userName&&<h6 className="pt-3">{userName}</h6>
+            }
+          </Navbar.Brand>
               <ScrollLink className="navItem"  to="features" smooth={true} duration={100}>
               Our Services
               </ScrollLink>

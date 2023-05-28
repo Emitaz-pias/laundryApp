@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios'
+import { UsersContext } from '../../App';
+import { useNavigate  } from 'react-router-dom';
+
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [haveAccount,setHaveAccount] =useState(false);
-  const handleClick = () => {
-    setHaveAccount(!haveAccount)
-  }
+  const {user,auth} =useContext(UsersContext)
+  const [loggedInUser, setLoggedInUser] =user
+  const [isAuthenticated, setIsAuthenticated] =auth
 
     const {
         register,
@@ -16,7 +21,6 @@ const LoginPage = () => {
       } = useForm();
 
       const onSubmit = async data => {
-        console.log(data)
         try {
           // Make POST API request
           const response = await axios.post('http://localhost:5000/login', data, {
@@ -24,7 +28,17 @@ const LoginPage = () => {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
             },
-          }).then(res=>console.log(res))
+          }).then(res=>{setLoggedInUser(res)
+          if(res.data.email !=="user Not Found"){
+            localStorage.setItem("userName",res.data.name)
+            localStorage.setItem("userEmail",res.data.email)
+            localStorage.setItem("isAuthenticated",true)
+            setIsAuthenticated(true)
+            setLoggedInUser(user)
+            navigate('/');
+            
+
+          }})
 
         } catch (error) {
           // Handle error
@@ -35,8 +49,8 @@ const LoginPage = () => {
     return (
         
         <Container>
-        <Row className="justify-content-center">
-          <Col md={6}>
+        <Row className="mt-2">
+          <Col md={{span:6,offset:2}} lg={{span:6,offset:3}} xs={{span:8,offset:1}}>
             <h2>Login</h2>
             <Form onSubmit={handleSubmit(onSubmit)}>
               <Form.Group controlId="email">

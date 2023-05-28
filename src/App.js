@@ -11,19 +11,18 @@ import Features from "./components/features/Features";
 export const UsersContext = createContext();
 function App() {
   
-  // const PrivateRoute = ({ path, ...props }) => {
-  //   if (isAuthenticated) {
-  //     return <Route path={path} {...props} />;
-  //   } else {
-  //     return <Navigate to="/login" replace />;
-  //   }
-  // }
+  const PrivateRoute = ({ path, ...props }) => {
+    if (isAuthenticated) {
+      return <Route path={path} {...props} />;
+    } else {
+      return <Navigate to="/login" replace />;
+    }
+  }
 // contex APIs
 const [isAuthenticated, setIsAuthenticated] = useState(false);
 const [loggedInUser, setLoggedInUser] = useState({});
  const [selectedProduct, setSeltectedProduct] = useState({});
  
-
   return (
     <UsersContext.Provider value={{
       auth:[isAuthenticated, setIsAuthenticated],
@@ -32,13 +31,15 @@ const [loggedInUser, setLoggedInUser] = useState({});
     }}>
     <BrowserRouter>
     <Routes>
-      
       <Route path="/" element={ <Homepage/>}/>
-       <Route path="/checkout" element={<CheckoutPage/>} />
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/myAccount" element={<MyAccountPage />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
+
         {/* <PrivateRoute path="/" element={<MyAccountPage onLogout={handleLogout} />} />  */}
         </Routes>  
+      
+
            </BrowserRouter>
            </UsersContext.Provider>
     

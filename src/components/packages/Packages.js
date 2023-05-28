@@ -8,21 +8,33 @@ import { UsersContext } from '../../App';
 import OrderPackageModal from '../orderNowModal/OrderPackageModal';
 
 
+
 const Packages = () => {
  const {product} =useContext(UsersContext)
  const [selectedProduct, setSeltectedProduct] =product;
  const [modalIsOpen, setModalIsOpen] = useState(false);
+ const isAuthenticated =false
+
   const openModal = () => {
+    console.log(isAuthenticated)
+   if(isAuthenticated===true){
     setModalIsOpen(true);
     document.body.style.overflow = 'hidden';
+   }
+ else{
+  window.alert('Please log in to make a purchase.');
+ }
   };
   const closeModal = () => {
     setModalIsOpen(false);
     document.body.style.overflow = 'auto'
-  };
+  }
+
     return (
        <div className="packages ">
-        {modalIsOpen&& <OrderPackageModal modalIsOpen={openModal} closeModal={closeModal}/>}
+
+{isAuthenticated && modalIsOpen && <OrderPackageModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
+}
         <Row>
           <Col lg={{span:4}} md={6} xs={12}>
           <Card className='customCard' >
