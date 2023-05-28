@@ -24,10 +24,8 @@ const LoginPage = () => {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': '*',
             },
-          });
-    
-          // Handle response
-          console.log('API response:', response.data);
+          }).then(res=>console.log(res))
+
         } catch (error) {
           // Handle error
           console.log('API error:', error);
