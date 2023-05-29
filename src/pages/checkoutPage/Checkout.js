@@ -1,28 +1,92 @@
 import React, { useContext, useState } from 'react';
 import { Form,Container, Row, Col, Card, Button } from 'react-bootstrap';
-import PayPalButton from '../../components/paypal/PaypalButton';
-import PayPalProvider from '../../components/paypal/PaypalProvider';
-import TopNavbar from '../../components/navbar/Navbar';
 import { UsersContext } from '../../App';
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { Link as ScrollLink } from 'react-scroll';
 
-const CheckoutPage = () => {
+
+const CheckoutPage = ({closeModal}) => {
   const {product} = useContext(UsersContext)
-const [selectedProduct, setSeltectedProduct]=product;
-console.log(selectedProduct,"frm chckut")
+const [selectedProduct]=product;
+const {packageData,orderData} =selectedProduct
   const [billingInfo, setBillingInfo] = useState({
     name: '',
     email: '',
     address: '',
     paymentMethod: '',
   });
+  const [orderSubmitted, setOrderSubmitted] = useState(false)
 
-  const handleInputChange = e => {
-    const { name, value } = e.target;
-    setBillingInfo(prevState => ({
-      ...prevState,
-      [name]: value,
-    }));
+console.log(selectedProduct,'selectedProduct')
+// stipe
+const stripe = useStripe();
+  const elements = useElements();
+
+  const cardElementOptions = {
+    style: {
+      base: {
+        fontSize: '16px',
+        color: '#32325d',
+        '::placeholder': {
+          color: '#aab7c4',
+        },
+      },
+      invalid: {
+        color: '#fa755a',
+      },
+    },
   };
+  const handlePlaceOrder = async () => {
+    // Check if stripe and elements are loaded
+    if (!stripe || !elements) {
+      return;
+    }
+    // Create a payment method using the card element
+    const cardElement = elements.getElement(CardElement);
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+    });
+
+    if (error) {
+      console.log('Error:', error.message);
+      return;
+    }
+
+    // Process the payment and place the order
+    // You can send the payment method ID and other order details to your server for further processing
+
+    // Example code: Send payment method ID and order details to your server
+    const orderDetails = {
+      paymentMethodId: paymentMethod.id,
+      packageData,
+      orderData,
+      billingInfo
+      // Other order details such as items, shipping address, etc.
+    };
+
+    // Send the order details to your server for processing
+    try {
+      const response = await fetch('http://localhost:5000/order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(orderDetails),
+      });
+
+      // Handle the server response and display success or error message to the user
+      if (response.ok) {
+        setOrderSubmitted(true)
+      } else {
+        console.log('Error placing the order. Please try again.');
+      }
+    } catch (error) {
+   
+    }
+  };
+  //
+
 
   const handlePaymentMethodChange = e => {
     setBillingInfo(prevState => ({
@@ -34,53 +98,36 @@ console.log(selectedProduct,"frm chckut")
   const handleSubmit = e => {
     e.preventDefault();
     // Handle form submission
-    console.log('Billing Info:', billingInfo);
     // Redirect or perform further actions
   };
-const userEmail = localStorage.getItem('userEmail');
-console.log(selectedProduct.orderData.adress)
   return (
-    <Container>
-         <Row>
+    <Container className=''>
+         {/* <Row>
       <TopNavbar/>  </Row> 
-      <Row className='mt-5 pt-5'></Row>
-      <Row className="justify-content-center">
-        <Col md={6}>
-          <h2>Checkout</h2>
+      <Row className='mt-5 pt-5'></Row> */}
+      {orderSubmitted?  <Row >
+        <Col lg={{span:10}}>  
+        <h1 className='text-success mt-2 '>Congratulation your has placed successfully!!!</h1>
+        <ScrollLink className="navItem" onClick={closeModal}  to="packages" smooth={true} duration={100}>
+             Continue to shop more
+              </ScrollLink>
+       </Col>
+      
+      </Row>: <Row    >
+        <Col lg={{span:9,offset:2}}>
+          <h2>Order Details</h2>
           <Card>
             <Card.Body>
               <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="name">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    value={billingInfo.name}
-                    onChange={handleInputChange}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="email">
-                  <Form.Label>{userEmail}</Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    value={billingInfo.email}
-                    onChange={handleInputChange}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="address">
-                  <Form.Label>asdjf</Form.Label>
-                  <Form.Control
-                    as="textarea"
-                    rows={3}
-                    name="address"
-                    value={billingInfo.address}
-                    onChange={handleInputChange}
-                  />
-                </Form.Group>
-
+                <p>
+                  Package Name: <b>{packageData.title}</b> 
+                </p>
+                <p>
+                  Package Price: <b>{packageData.price}</b> 
+                </p>
+                <p>
+                 Pickup Adress: <b>{orderData.address}</b> 
+                </p>
                 <Form.Group>
                   <Form.Label>Payment Method</Form.Label>
                   <Form.Control
@@ -94,20 +141,25 @@ console.log(selectedProduct.orderData.adress)
                     <option value="paypal">PayPal</option>
                   </Form.Control>
                 </Form.Group>
-
-                <Button variant="primary" type="submit">
+{billingInfo.paymentMethod==='credit_card' &&<Row className='mt-5' lg={{span:8,offset:2}}>
+      
+      <CardElement options={cardElementOptions} />
+      </Row>}
+                <Button onClick={handlePlaceOrder} variant="primary" type="submit">
                   Place Order
                 </Button>
+                <Button variant='danger' className='customBtn mt-5 ms-5 mb-3' onClick={closeModal} >
+      Cancel
+        </Button>
+               
               </Form>
             </Card.Body>
           </Card>
         </Col>
-      </Row>
-      <Row>
-        <Col md={6}>  <PayPalProvider/>
-       </Col>
-      
-      </Row>
+      </Row>}
+     
+    
+     
     </Container>
   );
 };

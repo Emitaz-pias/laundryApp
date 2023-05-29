@@ -12,9 +12,9 @@ const Dashboard = () => {
       try {
         // Mock API call delay
         await new Promise(resolve => setTimeout(resolve, 1000));
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts'); // Replace with your actual API endpoint
+        const response = await fetch('http://localhost:5000/getAllOrders'); // Replace with your actual API endpoint
         const data = await response.json();
-        console.log(data)
+        console.log(data,'xxxxxx')
         setOrders(data);
         setIsLoading(false);
       } catch (error) {
@@ -88,9 +88,9 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                   {filterOrders().map(order => (
-                    <tr key={order.id}>
-                      <td>{order.userId}</td>
-                      <td>{order.title}</td>
+                    <tr key={order._id}>
+                      <td>{order._id}</td>
+                      <td>{order.packageData.title}</td>
                       <td>
                         <Badge variant={order.status === 'Pending' ? 'danger' : 'success'}>
                           {order.status}

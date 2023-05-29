@@ -1,18 +1,15 @@
-import React,{useContext, useState} from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
+import React,{useState} from 'react';
+import { Row } from 'react-bootstrap';
 import family from "../../images/family.jpg"
 import single from "../../images/single.jpg"
 import couple from "../../images/couple.jpg"
 import "./Packages.css"
-import { UsersContext } from '../../App';
 import OrderPackageModal from '../orderNowModal/OrderPackageModal';
 import PackageCard from './PackageCard';
 
 
 
 const Packages = () => {
- const {product} =useContext(UsersContext)
- const [selectedProduct, setSeltectedProduct] =product;
  const [modalIsOpen, setModalIsOpen] = useState(false);
  const isAuthenticated =localStorage.getItem('isAuthenticated');
 

@@ -32,11 +32,12 @@ const TopNavbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
-            <Navbar.Brand as={RouterLink} to="/myAccount">
-            {
-              userName&&<h6 className="pt-3">{userName}</h6>
+           {userName&& <Navbar.Brand as={RouterLink} to="/logOutPage">
+            
+              <h6 className="pt-3">{userName}</h6>
+              </Navbar.Brand>
             }
-          </Navbar.Brand>
+         
               <ScrollLink className="navItem"  to="features" smooth={true} duration={100}>
               Our Services
               </ScrollLink>

@@ -2,14 +2,14 @@ import React, { useContext, useState } from 'react';
 import Modal from "react-modal";
 import { useForm } from 'react-hook-form';
 import { Form, Button } from 'react-bootstrap';
-import "./OrderPackage.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import "./OrderPackage.css";
 import { UsersContext } from '../../App';
 import CheckoutPage from '../../pages/checkoutPage/Checkout';
-import { useNavigate } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 
+const stripePromise = loadStripe('pk_test_iONwyHcRVWakZiYUQOPzcA8d00C5WkKbt2');
 const customStyles = {
     content: {
       top: "50%",
@@ -23,9 +23,8 @@ const customStyles = {
   Modal.setAppElement("#root");
 
 const OrderPackageModal = ({ modalIsOpen, closeModal,packageData}) => {
-  const  navigate =useNavigate()
-  const {product} =useContext(UsersContext)
-const [selectedProduct, setSeltectedProduct]=product;
+    const {product} =useContext(UsersContext)
+const [ selectedProduct,setSeltectedProduct]=product;
 const [showCheckOut,setShowCheckOut] = useState(false)
     const { register, handleSubmit,formState: { errors }, } = useForm();
     const userName= localStorage.getItem('userName');
@@ -33,13 +32,12 @@ const [showCheckOut,setShowCheckOut] = useState(false)
     const onSubmit = (data,event) => {
       event.preventDefault();
     let  selectedOrder ={packageData:packageData,orderData:data}
-      console.log(showCheckOut)
-      navigate('./checkout')
      if(data){
       setSeltectedProduct(selectedOrder)
       setShowCheckOut(true)
      
      }
+    
     };
 
     return (
@@ -53,11 +51,12 @@ const [showCheckOut,setShowCheckOut] = useState(false)
         <main
           className="fullModal"
           style={{
-            height: "50vh",
+            height: "60vh",
             width: "50vw",
             backgroundColor: "white",
           }}
-        ><Form onSubmit={handleSubmit(onSubmit)}>
+        >
+          {showCheckOut?<Elements stripe={stripePromise}><CheckoutPage closeModal={closeModal}/></Elements> :  <Form onSubmit={handleSubmit(onSubmit)}>
           <h2 className='text-center'>{packageData.title}</h2>
           <Form.Group className='text-center text-success'  controlId="contactNo">
           <Form.Label>Price :${packageData.price}</Form.Label>
@@ -73,21 +72,21 @@ const [showCheckOut,setShowCheckOut] = useState(false)
   
         <Form.Group controlId="address">
           <Form.Label>Address</Form.Label>
-          <Form.Control type="text" {...register('address')} />
-          {errors.name && <span className="error-message">Please enter Address</span>}
+          <Form.Control type="text" {...register('address',{ required: true })} />
+          {errors.address && <span className="error-message">Please enter Address</span>}
 
         </Form.Group>
   
         <Form.Group controlId="pickupDate">
           <Form.Label>Pickup Date</Form.Label>
-          <Form.Control type="date" {...register('pickupDate')} />
-          {errors.name && <span className="error-message">Please enter Address</span>}
+          <Form.Control type="date" {...register('pickupDate',{ required: true })} />
+          {errors.pickupDate && <span className="error-message">Please Enter Pickup Date</span>}
 
         </Form.Group>
   
         <Form.Group controlId="pickupTime">
           <Form.Label>Pickup Time</Form.Label>
-          <Form.Control as="select" {...register('pickupTime')}>
+          <Form.Control as="select" {...register('pickupTime',{ required: true })}>
 
           <option value="08:00 AM">8:00 AM</option>
         <option value="09:00 AM">9:00 AM</option>
@@ -104,7 +103,7 @@ const [showCheckOut,setShowCheckOut] = useState(false)
         <option value="08:00 PM">8:00 PM</option>
         <option value="09:00 PM">9:00 PM</option>
         <option value="10:00 PM">10:00 PM</option>
-            {errors.name && <span className="error-message">Please enter Address</span>}
+            {errors.pickupTime && <span className="error-message">Please Enter Pickup Time</span>}
 
           </Form.Control>
         </Form.Group>
@@ -130,12 +129,12 @@ const [showCheckOut,setShowCheckOut] = useState(false)
         <Button className='mt-5 ms-5 mb-3'  type="submit" >
         Proceed to checout
         </Button>
-        <FontAwesomeIcon onClick={closeModal} className='mt-5 ms-5 mb-3'  icon={faTimes} size='4x'>
-
-        </FontAwesomeIcon>
-        
+        <Button variant='danger' className='customBtn mt-5 ms-5 mb-3' onClick={closeModal} >
+      Cancel
+        </Button>
         </div>
-      </Form>
+      </Form>}
+        
       
              </main>
 

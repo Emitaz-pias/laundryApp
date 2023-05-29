@@ -8,6 +8,7 @@ import OnlineStore from "./pages/onlineStorePage/OnlineStore";
 import CheckoutPage from "./pages/checkoutPage/Checkout";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Features from "./components/features/Features";
+import LogoutPage from "./pages/checkoutPage/logOutPage/logOutPage";
 export const UsersContext = createContext();
 function App() {
   
@@ -35,6 +36,8 @@ const [loggedInUser, setLoggedInUser] = useState({});
       <Route path="/dashboard" element={<Dashboard/>} />
       <Route path="/myAccount" element={<MyAccountPage />} />
       <Route path="/checkout" element={<CheckoutPage />} />
+      <Route path="/logOutPage" element={<LogoutPage />} />
+
 
         {/* <PrivateRoute path="/" element={<MyAccountPage onLogout={handleLogout} />} />  */}
         </Routes>  

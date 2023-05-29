@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card, Button, Col } from 'react-bootstrap';
-import OrderPackageModal from '../orderNowModal/OrderPackageModal';
+import { Card, Col } from 'react-bootstrap';
 const PackageCard = ({ packageData, handleOrder, openModal ,closeModal}) => {
   const { title, price, description, regularPrice, packagePrice, savings, duration,image } = packageData;
 
