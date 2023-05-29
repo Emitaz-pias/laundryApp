@@ -6,6 +6,7 @@ import couple from "../../images/couple.jpg"
 import "./Packages.css"
 import { UsersContext } from '../../App';
 import OrderPackageModal from '../orderNowModal/OrderPackageModal';
+import PackageCard from './PackageCard';
 
 
 
@@ -13,201 +14,110 @@ const Packages = () => {
  const {product} =useContext(UsersContext)
  const [selectedProduct, setSeltectedProduct] =product;
  const [modalIsOpen, setModalIsOpen] = useState(false);
- const isAuthenticated =false
+ const isAuthenticated =localStorage.getItem('isAuthenticated');
 
-  const openModal = () => {
-    console.log(isAuthenticated)
-   if(isAuthenticated===true){
-    setModalIsOpen(true);
-    document.body.style.overflow = 'hidden';
-   }
- else{
-  window.alert('Please log in to make a purchase.');
- }
-  };
+ const openModal = () => {
+if(isAuthenticated==='true'){
+  setModalIsOpen(true);
+  document.body.style.overflow = 'hidden';
+}
+else{
+  window.alert('You must be logged in to purchase')
+}}
+
   const closeModal = () => {
     setModalIsOpen(false);
     document.body.style.overflow = 'auto'
   }
-
+  const cardData = [
+    {
+      title: 'Family Steam Ironing Pack',
+      price: '900',
+      description: '100 Pcs',
+      regularPrice: '1000',
+      packagePrice: '900',
+      savings: '100',
+      duration: '30 Day Duration',
+      image: family,
+    },
+    {
+      title: 'Couple Steam Ironing Pack',
+      price: '630',
+      description: '70 Pcs',
+      regularPrice: '700',
+      packagePrice: '630',
+      savings: '70',
+      duration: '30 Day Duration',
+      image: couple,
+    },
+    {
+      title: 'Single Steam Ironing Pack',
+      price: '450',
+      description: '50 Pcs',
+      regularPrice: '500',
+      packagePrice: '450',
+      savings: '50',
+      duration: '30 Day Duration',
+      image: single,
+    },
+    {
+      title: 'Single Washing Pack',
+      price: '1000',
+      description: '20 Pcs',
+      regularPrice: '1200',
+      packagePrice: '1000',
+      savings: '200',
+      duration: '30 Day Duration',
+      image: single,
+    },
+    {
+      title: 'Couple Washing Pack',
+      price: '2000',
+      description: '40 Pcs',
+      regularPrice: '2400',
+      packagePrice: '2000',
+      savings: '400',
+      duration: '30 Day Duration',
+      image: couple,
+    },
+    {
+      title: 'Family Washing Pack',
+      price: '3000',
+      description: '60 Pcs',
+      regularPrice: '3600',
+      packagePrice: '3000',
+      savings: '600',
+      duration: '30 Day Duration',
+      image: family,
+    },
+  ];
+  
+  
     return (
        <div className="packages ">
+     <Row className='mt-3'>
+     {cardData.map((packageData, index) => {
+  return (
+    <React.Fragment key={index}>
+      {isAuthenticated && modalIsOpen && (
+        <OrderPackageModal
+          packageData={packageData}
+          modalIsOpen={modalIsOpen}
+          closeModal={closeModal}
+        />
+      )}
+      <PackageCard
+        key={index}
+        packageData={packageData}
+        openModal={openModal}
+      />
+    </React.Fragment>
+  );
+})}
 
-{isAuthenticated && modalIsOpen && <OrderPackageModal modalIsOpen={modalIsOpen} closeModal={closeModal} />
-}
-        <Row>
-          <Col lg={{span:4}} md={6} xs={12}>
-          <Card className='customCard' >
-        <Card.Img className='customCardImg' variant="top" src={family} />
-        <Card.Body>
-          <Card.Title className='customCardTitle'>Family Steam Ironing Pack</Card.Title>
-          <Card.Subtitle className="mb-2 customCardPrice ">BDT900/ Monthly    </Card.Subtitle>
-
-          <Card.Text className='customCardDes'>
-            100 Pcs
-          </Card.Text>
-          <hr />
-          <Card.Text className='customCardDes' >
-          Reguler Price BDT 1000
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          Package Price BDT 900
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          You save BDT 100
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          30 Day Duration
-          </Card.Text>
-          <hr />    
-          <button onClick={openModal} className='customCardBtn btn'>Purchase Now</button>
-        </Card.Body>
-      </Card>
-          </Col>
-          <Col lg={{span:4}} md={6} xs={12}>
-          <Card className='customCard' >
-        <Card.Img className='customCardImg' variant="top" src={couple} />
-        <Card.Body>
-          <Card.Title className='customCardTitle'>Couple Steam Ironing pack</Card.Title>
-          <Card.Subtitle className="mb-2 customCardPrice ">BDT900/ Monthly    </Card.Subtitle>
-
-          <Card.Text className='customCardDes'>
-            100 Pcs
-          </Card.Text>
-          <hr />
-          <Card.Text className='customCardDes' >
-          Reguler Price BDT 1000
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          Package Price BDT 900
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          You save BDT 100
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          30 Day Duration
-          </Card.Text>
-          <hr />    
-          <button onClick={openModal}  className='customCardBtn btn'>Purchase Now</button>
-        </Card.Body>
-      </Card>
-          </Col>
-          <Col lg={{span:4}} md={6} xs={12}>
-          <Card className='customCard' >
-        <Card.Img className='customCardImg' variant="top" src={single} />
-        <Card.Body>
-          <Card.Title className='customCardTitle'>Single Steam Ironing Pack</Card.Title>
-          <Card.Subtitle className="mb-2 customCardPrice ">BDT900/ Monthly    </Card.Subtitle>
-
-          <Card.Text className='customCardDes'>
-            100 Pcs
-          </Card.Text>
-          <hr />
-          <Card.Text className='customCardDes' >
-          Reguler Price BDT 1000
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          Package Price BDT 900
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          You save BDT 100
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          30 Day Duration
-          </Card.Text>
-          <hr />    
-          <button  onClick={openModal} className='customCardBtn btn'>Purchase Now</button>
-        </Card.Body>
-      </Card>
-          </Col>
         </Row>
-        <Row className='mt-3'>
-          <Col lg={{span:4}} md={6} xs={12}>
-          <Card className='customCard' >
-        <Card.Img className='customCardImg' variant="top" src={family} />
-        <Card.Body>
-          <Card.Title className='customCardTitle'>Family Washing Pack</Card.Title>
-          <Card.Subtitle className="mb-2 customCardPrice ">BDT900/ Monthly    </Card.Subtitle>
-
-          <Card.Text className='customCardDes'>
-            100 Pcs
-          </Card.Text>
-          <hr />
-          <Card.Text className='customCardDes' >
-          Reguler Price BDT 1000
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          Package Price BDT 900
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          You save BDT 100
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          30 Day Duration
-          </Card.Text>
-          <hr />    
-          <button onClick={openModal} className='customCardBtn btn'>Purchase Now</button>
-        </Card.Body>
-      </Card>
-          </Col>
-          <Col lg={{span:4}} md={6} xs={12}>
-          <Card className='customCard' >
-        <Card.Img className='customCardImg' variant="top" src={couple} />
-        <Card.Body>
-          <Card.Title className='customCardTitle'>Couple Washing Pack</Card.Title>
-          <Card.Subtitle className="mb-2 customCardPrice ">BDT900/ Monthly    </Card.Subtitle>
-
-          <Card.Text className='customCardDes'>
-            100 Pcs
-          </Card.Text>
-          <hr />
-          <Card.Text className='customCardDes' >
-          Reguler Price BDT 1000
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          Package Price BDT 900
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          You save BDT 100
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          30 Day Duration
-          </Card.Text>
-          <hr />    
-          <button onClick={openModal} className='customCardBtn btn'>Purchase Now</button>
-        </Card.Body>
-      </Card>
-          </Col>
-          <Col lg={{span:4}} md={6} xs={12}>
-          <Card className='customCard' >
-        <Card.Img className='customCardImg' variant="top" src={single} />
-        <Card.Body>
-          <Card.Title className='customCardTitle'>Single Washing Pack</Card.Title>
-          <Card.Subtitle className="mb-2 customCardPrice ">BDT900/ Monthly    </Card.Subtitle>
-
-          <Card.Text className='customCardDes'>
-            100 Pcs
-          </Card.Text>
-          <hr />
-          <Card.Text className='customCardDes' >
-          Reguler Price BDT 1000
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          Package Price BDT 900
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          You save BDT 100
-          </Card.Text>
-          <hr /><Card.Text className='customCardDes'>
-          30 Day Duration
-          </Card.Text>
-          <hr />    
-          <button  onClick={openModal} className='customCardBtn btn'>Purchase Now</button>
-        </Card.Body>
-      </Card>
-          </Col>
-        </Row>
-         
+       
+  
        </div>
     );
 };

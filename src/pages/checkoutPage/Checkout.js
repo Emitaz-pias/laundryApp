@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Form,Container, Row, Col, Card, Button } from 'react-bootstrap';
 import PayPalButton from '../../components/paypal/PaypalButton';
 import PayPalProvider from '../../components/paypal/PaypalProvider';
 import TopNavbar from '../../components/navbar/Navbar';
+import { UsersContext } from '../../App';
 
 const CheckoutPage = () => {
+  const {product} = useContext(UsersContext)
+const [selectedProduct, setSeltectedProduct]=product;
+console.log(selectedProduct,"frm chckut")
   const [billingInfo, setBillingInfo] = useState({
     name: '',
     email: '',
@@ -33,7 +37,8 @@ const CheckoutPage = () => {
     console.log('Billing Info:', billingInfo);
     // Redirect or perform further actions
   };
-
+const userEmail = localStorage.getItem('userEmail');
+console.log(selectedProduct.orderData.adress)
   return (
     <Container>
          <Row>
@@ -56,7 +61,7 @@ const CheckoutPage = () => {
                 </Form.Group>
 
                 <Form.Group controlId="email">
-                  <Form.Label>Email</Form.Label>
+                  <Form.Label>{userEmail}</Form.Label>
                   <Form.Control
                     type="email"
                     name="email"
@@ -66,7 +71,7 @@ const CheckoutPage = () => {
                 </Form.Group>
 
                 <Form.Group controlId="address">
-                  <Form.Label>Address</Form.Label>
+                  <Form.Label>asdjf</Form.Label>
                   <Form.Control
                     as="textarea"
                     rows={3}
