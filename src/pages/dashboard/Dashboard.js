@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Table, Badge, Form } from 'react-bootstrap';
 
@@ -14,7 +15,6 @@ const Dashboard = () => {
         await new Promise(resolve => setTimeout(resolve, 1000));
         const response = await fetch('http://localhost:5000/getAllOrders'); // Replace with your actual API endpoint
         const data = await response.json();
-        console.log(data,'xxxxxx')
         setOrders(data);
         setIsLoading(false);
       } catch (error) {
@@ -24,16 +24,56 @@ const Dashboard = () => {
 
     fetchOrders();
   }, []);
+// update pending orders to shipping
+const handleShipping = async (id) => {
+  const orderId = id
+  console.log(id,'isisisisid')
+  try {
+    // Make the API call to update the status
+    const response = await fetch(`http://localhost:5000/orders/${orderId}/shipped`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
+    const data = await response.json();
+    console.log(data)
+  } catch (error) {
+    console.error('Error updating order status:', error);
+  }
+
+};
+
+// update pending orders to delivered
+const handleDelivered = async (id) => {
+  const orderId = id
+  try {
+    // Make the API call to update the status
+    const response = await fetch(`http://localhost:5000/orders/${orderId}/delivered`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await response.json();
+    console.log(data)
+  } catch (error) {
+    console.error('Error updating order status:', error);
+  }
+
+};
+
+// handle orders status
   const handleStatusChange = (orderId, newStatus) => {
-    setOrders(prevOrders =>
-      prevOrders.map(order => {
-        if (order.id === orderId) {
-          return { ...order, status: newStatus };
-        }
-        return order;
-      })
-    );
+    if(newStatus ==='Shipped'){
+      handleShipping(orderId)
+    }
+    else if(newStatus ==='Delivered'){
+      handleDelivered(orderId)
+    }
+    
   };
 
   const filterOrders = () => {
@@ -45,7 +85,10 @@ const Dashboard = () => {
   };
 
   const getTotalPendingOrders = () => {
-    return orders.filter(order => order.status === 'Pending').length;
+    return orders.filter(order => order.status === 'pending').length;
+  };
+  const getTotalShippedOrders = () => {
+    return orders.filter(order => order.status === 'Shipped').length;
   };
 
   const getTotalDeliveredOrders = () => {
@@ -76,6 +119,7 @@ const Dashboard = () => {
           ) : (
             <>
               <p>Total Pending Orders: {getTotalPendingOrders()}</p>
+              <p>Total Shipped Orders: {getTotalShippedOrders()}</p>
               <p>Total Delivered Orders: {getTotalDeliveredOrders()}</p>
               <Table striped bordered>
                 <thead>
@@ -101,7 +145,7 @@ const Dashboard = () => {
                           <Form.Control
                             as="select"
                             value={order.status}
-                            onChange={e => handleStatusChange(order.id, e.target.value)}
+                            onChange={e => handleStatusChange(order._id, e.target.value)}
                           >
                             <option value="Pending">Pending</option>
                             <option value="Shipped">Shipped</option>

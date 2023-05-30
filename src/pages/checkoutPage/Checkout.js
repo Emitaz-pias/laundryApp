@@ -17,7 +17,6 @@ const {packageData,orderData} =selectedProduct
   });
   const [orderSubmitted, setOrderSubmitted] = useState(false)
 
-console.log(selectedProduct,'selectedProduct')
 // stipe
 const stripe = useStripe();
   const elements = useElements();
@@ -61,7 +60,8 @@ const stripe = useStripe();
       paymentMethodId: paymentMethod.id,
       packageData,
       orderData,
-      billingInfo
+      billingInfo,
+      status:"pending"
       // Other order details such as items, shipping address, etc.
     };
 
