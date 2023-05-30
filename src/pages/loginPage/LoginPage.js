@@ -33,7 +33,7 @@ const LoginPage = () => {
           if(res.data.email !=="user Not Found"&&res.data.email !==undefined){
             localStorage.setItem("userName",res.data.name)
             localStorage.setItem("userEmail",res.data.email)
-            localStorage.setItem("isLoggedIn",true)
+            localStorage.setItem("isAuthenticated",true)
             setIsAuthenticated(true)
             setLoggedInUser(user)
             navigate('/');

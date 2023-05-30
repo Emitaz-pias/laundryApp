@@ -1,18 +1,20 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
-const PackageCard = ({ packageData, handleOrder, openModal ,closeModal}) => {
+
+
+
+
+const PackageCard = ({ setSeltectedProduct,packageData, openModal}) => {
   const { title, price, description, regularPrice, packagePrice, savings, duration,image } = packageData;
 
   const handleOrderClick = () => {
+    setSeltectedProduct(packageData)
     openModal()
- 
   };
-
   return (
     
-    <Col lg={{span:4}} md={6} xs={12}>
-      
-  <Card className='customCard mt-3'>
+    <Col lg={{span:4}} md={6} xs={12}>      
+      <Card className='customCard mt-3'>
       <Card.Img className='customCardImg' variant="top" src={image} />
       <Card.Body>
         <Card.Title className='customCardTitle'>{title}</Card.Title>

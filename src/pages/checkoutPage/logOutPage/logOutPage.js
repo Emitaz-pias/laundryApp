@@ -13,6 +13,7 @@ const LogoutPage = () => {
     e.preventDefault();
     localStorage.setItem("userName","")
     localStorage.setItem("userEmail","")
+    localStorage.setItem('isAuthenticated',false)
     localStorage.setItem("isLoggedIn",false)
     setIsAuthenticated(true)
     setLoggedInUser(user)

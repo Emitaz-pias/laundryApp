@@ -6,9 +6,9 @@ import { Link as ScrollLink } from 'react-scroll';
 
 
 const CheckoutPage = ({closeModal}) => {
-  const {product} = useContext(UsersContext)
-const [selectedProduct]=product;
-const {packageData,orderData} =selectedProduct
+  const {order} =useContext(UsersContext)
+const [selectedOrder, ] =order;
+const {packageData,orderData} =selectedOrder
   const [billingInfo, setBillingInfo] = useState({
     name: '',
     email: '',
@@ -61,7 +61,7 @@ const stripe = useStripe();
       packageData,
       orderData,
       billingInfo,
-      status:"pending"
+      status:"Pending"
       // Other order details such as items, shipping address, etc.
     };
 

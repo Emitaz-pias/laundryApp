@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
 import { Row } from 'react-bootstrap';
 import family from "../../images/family.jpg"
 import single from "../../images/single.jpg"
@@ -6,17 +6,19 @@ import couple from "../../images/couple.jpg"
 import "./Packages.css"
 import OrderPackageModal from '../orderNowModal/OrderPackageModal';
 import PackageCard from './PackageCard';
+import { UsersContext } from '../../App';
 
 
 
 const Packages = () => {
  const [modalIsOpen, setModalIsOpen] = useState(false);
  const isAuthenticated =localStorage.getItem('isAuthenticated');
-
- const openModal = () => {
+ const {product}= useContext(UsersContext)
+ const [ selectedProduct,setSeltectedProduct]=product;
+ const openModal = (key) => {
 if(isAuthenticated==='true'){
   setModalIsOpen(true);
-  document.body.style.overflow = 'hidden';
+  // document.body.style.overflow = 'hidden';
 }
 else{
   window.alert('You must be logged in to purchase')
@@ -98,15 +100,18 @@ else{
     <React.Fragment key={index}>
       {isAuthenticated && modalIsOpen && (
         <OrderPackageModal
-          packageData={packageData}
+        packageData={selectedProduct}
           modalIsOpen={modalIsOpen}
           closeModal={closeModal}
         />
       )}
       <PackageCard
         key={index}
+        isAuthenticated={isAuthenticated}
+        modalIsOpen={modalIsOpen}
         packageData={packageData}
-        openModal={openModal}
+        openModal={()=>openModal(index)}
+        setSeltectedProduct={setSeltectedProduct}
       />
     </React.Fragment>
   );

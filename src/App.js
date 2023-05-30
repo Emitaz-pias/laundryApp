@@ -23,12 +23,14 @@ function App() {
 const [isAuthenticated, setIsAuthenticated] = useState(false);
 const [loggedInUser, setLoggedInUser] = useState({});
  const [selectedProduct, setSeltectedProduct] = useState({});
+ const [selectedOrder, setSelectedOrder] = useState({});
  
   return (
     <UsersContext.Provider value={{
       auth:[isAuthenticated, setIsAuthenticated],
       user: [loggedInUser, setLoggedInUser],
       product: [selectedProduct, setSeltectedProduct],
+      order: [selectedOrder, setSelectedOrder]
     }}>
     <BrowserRouter>
     <Routes>

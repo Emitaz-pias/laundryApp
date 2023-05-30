@@ -23,17 +23,17 @@ const customStyles = {
   Modal.setAppElement("#root");
 
 const OrderPackageModal = ({ modalIsOpen, closeModal,packageData}) => {
-    const {product} =useContext(UsersContext)
-const [ selectedProduct,setSeltectedProduct]=product;
+    const {order} =useContext(UsersContext)
+const [selectedOrder, setSelectedOrder] =order;
 const [showCheckOut,setShowCheckOut] = useState(false)
     const { register, handleSubmit,formState: { errors }, } = useForm();
     const userName= localStorage.getItem('userName');
     const userEmail= localStorage.getItem('userEmail');
     const onSubmit = (data,event) => {
       event.preventDefault();
-    let  selectedOrder ={packageData:packageData,orderData:data}
+    let  selectedUserOrder ={packageData:packageData,orderData:data}
      if(data){
-      setSeltectedProduct(selectedOrder)
+      setSelectedOrder(selectedUserOrder)
       setShowCheckOut(true)
      
      }
